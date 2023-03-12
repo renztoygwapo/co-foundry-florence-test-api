@@ -9,6 +9,7 @@ class UploadPhotoAction {
         // Assuming that we auth the user
         $user = User::latest()->first();
 
-        $user->addMediaFromRequest('image')->toMediaCollection();
+        $user->addMediaFromRequest('image')
+            ->toMediaCollection();
     }
 }

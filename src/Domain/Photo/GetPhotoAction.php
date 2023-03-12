@@ -12,7 +12,8 @@ class GetPhotoAction {
         // get the media
         $media = $user->getMedia();
 
-        $publicUrl = $media[0]->getUrl();
-        return $publicUrl;
+        $publicUrl = $media[0]->getFullUrl();
+
+        return response()->json(['url' => $publicUrl]);
     }
 }
