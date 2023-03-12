@@ -13,8 +13,13 @@ class PhotoController extends Controller
         return resolve(UploadPhotoAction::class)($request->image);
     }
 
-    public function get()
+    public function get($width = 100, $height = 200, $left = 20, $top = 0)
     {
-        return resolve(GetPhotoAction::class)();
+        return resolve(GetPhotoAction::class)(
+            $width,
+            $height,
+            $left,
+            $top
+        );
     }
 }
