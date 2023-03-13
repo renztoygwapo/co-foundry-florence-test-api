@@ -44,13 +44,4 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public $registerMediaConversionsUsingModelInstance = true;
-
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('cropped')
-            ->width($this->width)
-            ->height($this->height);
-    }
 }

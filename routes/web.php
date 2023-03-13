@@ -1,5 +1,6 @@
 <?php
 
+use Domain\Photo\GetPhotoAction;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\PhotoController;
@@ -16,13 +17,15 @@ use App\Http\Controllers\PhotoController;
 */
 
 Route::get('/', function () {
+    
     // return ['Laravel' => app()->version()];
-    return Image::make('http://co-foundry-api.test/storage/17/team-ultra.png')
-            ->crop(1050,850,215,375)
-            ->response();
+    // return Image::make('http://co-foundry-api.test/storage/17/team-ultra.png')
+    //         ->crop(1050,850,215,375)
+    //         ->response();
+    return resolve(GetPhotoAction::class)();
 });
 
-Route::get('image/{width}/{height}/{left}/{top}', [PhotoController::class, 'get']);
+Route::get('image/{width}/{height}/{left}/{top}/{layout}', [PhotoController::class, 'get']);
 
 
 require __DIR__.'/auth.php';

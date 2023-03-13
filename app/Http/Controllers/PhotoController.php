@@ -10,16 +10,17 @@ class PhotoController extends Controller
 {
     public function store(Request $request)
     {
-        return resolve(UploadPhotoAction::class)($request->image);
+        return resolve(UploadPhotoAction::class)($request->all());
     }
 
-    public function get($width = 100, $height = 200, $left = 20, $top = 0)
+    public function get($width = 100, $height = 200, $left = 20, $top = 0, $layout = 1)
     {
         return resolve(GetPhotoAction::class)(
             $width,
             $height,
             $left,
-            $top
+            $top,
+            $layout
         );
     }
 }
